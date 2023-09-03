@@ -1,3 +1,9 @@
+/* Custom properties */
+:root {
+  --color-dark: #060606;
+  --color-white: #fff;
+}
+
 /* Typography */
 @font-face {
   font-family: "Lato";
@@ -67,4 +73,103 @@ body {
   padding-bottom: 82px;
   position: relative;
   min-height: 100vh;
+}
+
+a {
+  font-family: "Lato", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Header and Nav */
+.header {
+  box-shadow: -1px 3px 20px 0px rgb(255 255 255 / 22%);
+}
+
+.navbar {
+  background-color: var(--color-dark);
+}
+
+.navbar-nav {
+  @media (min-width: 992px) {
+    column-gap: 0.5rem;
+  }
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.nav-link {
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-decoration: none;
+  opacity: 0.7;
+  padding: 1rem;
+  transition: background 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--color-white);
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.navbar-nav .nav-link:hover {
+  background: #fff;
+  opacity: 1;
+  color: #000;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:focus:not(:focus-visible) {
+  box-shadow: none;
+  outline: 1px solid var(--color-white);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 3rem;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.navbar-toggler[aria-expanded="true"]
+  .hamburger
+  input:checked
+  + svg
+  .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
 }
