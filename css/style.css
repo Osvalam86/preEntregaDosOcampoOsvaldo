@@ -1,5 +1,6 @@
 /* Custom properties */
 :root {
+  --color-blue: #092d7c;
   --color-dark: #060606;
   --color-white: #fff;
 }
@@ -172,4 +173,22 @@ img {
   .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
+}
+
+/* footer */
+.footer {
+  background-color: var(--color-blue);
+}
+
+.footer .container {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.footer__copyright {
+  margin-bottom: 0;
+}
+
+.social-networks {
+  display: flex;
+  column-gap: 1rem;
 }
