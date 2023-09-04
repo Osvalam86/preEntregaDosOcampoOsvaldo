@@ -18,12 +18,15 @@
     />
     <!-- Bootstrap stylesheet -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- Slick stylesheets -->
+    <link rel="stylesheet" href="./css/slick.css" />
+    <link rel="stylesheet" href="./css/slick-theme.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <!-- Navigation -->
-    <header class="header">
+    <header class="header fixed-top">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="./index.html">
@@ -85,6 +88,86 @@
       </nav>
     </header>
 
+    <!-- Main content -->
+    <main class="main align-items-center">
+      <h1 class="sr-only">Página principal del spiderverso</h1>
+      <div class="container">
+        <div class="row row--slider">
+          <section class="col-xl-4 mb-5 mb-xl-0">
+            <div class="intro-container" id="introContainer"></div>
+          </section>
+          <section class="col-xl-8 align-self-end ps-xl-5">
+            <div class="custom-slider" id="mainSlider">
+              <div class="card custom-slider__card" data-position="1">
+                <img
+                  src="./assets/images/characters/gwen.jpg"
+                  class="card-img"
+                  alt="Imagen de Ghost spider"
+                />
+                <div class="card-img-overlay p-0">
+                  <strong class="card-title custom-slider__title">
+                    <a
+                      class="custom-slider__link"
+                      href="views/character-detail.html"
+                      >Ghost Spider</a
+                    >
+                  </strong>
+                </div>
+              </div>
+              <div class="card custom-slider__card" data-position="2">
+                <img
+                  src="./assets/images/characters/spiderman-2099.jpg"
+                  class="card-img"
+                  alt="Imagen de Miguel O'Hara"
+                />
+                <div class="card-img-overlay p-0">
+                  <strong class="card-title custom-slider__title">
+                    <a
+                      class="custom-slider__link"
+                      href="views/character-detail.html"
+                      >Miguel O'Hara</a
+                    >
+                  </strong>
+                </div>
+              </div>
+              <div class="card custom-slider__card" data-position="3">
+                <img
+                  src="./assets/images/characters/spider-ham.jpg"
+                  class="card-img"
+                  alt="Imagen de  Spider Ham"
+                />
+                <div class="card-img-overlay p-0">
+                  <strong class="card-title custom-slider__title">
+                    <a
+                      class="custom-slider__link"
+                      href="views/character-detail.html"
+                      >Spider Ham</a
+                    >
+                  </strong>
+                </div>
+              </div>
+              <div class="card custom-slider__card" data-position="0">
+                <img
+                  src="./assets/images/characters/miles.jpg"
+                  class="card-img"
+                  alt="Imagen de Miles Morales"
+                />
+                <div class="card-img-overlay p-0">
+                  <strong class="card-title custom-slider__title">
+                    <a
+                      class="custom-slider__link"
+                      href="views/character-detail.html"
+                      >Miles Morales</a
+                    >
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container d-flex justify-content-between align-items-center">
@@ -131,5 +214,90 @@
 
     <!-- Bootstrap script -->
     <script src="./js/bootstrap.min.js"></script>
+    <!-- necessary for the operation of the slider -->
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./js/slick.min.js"></script>
+
+    <!-- Data -->
+    <script src="./js/data.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        //DATA
+        const $introContainer = document.getElementById("introContainer"),
+          $fragment = document.createDocumentFragment();
+
+        const getInfo = () => {
+          let $slideActive = document
+            .querySelector(".slick-slide.is-active")
+            .getAttribute("data-position");
+          console.log($slideActive);
+          const info = dataHome[parseInt($slideActive)];
+          if (!info) {
+            return false;
+          }
+          const $content = `
+          <h2 class="font-title">${info.title}</h2>
+          ${info.intro}
+          <a href="${info.link}" class="font-link btn btn-primary mt-4"
+            >Saber más</a
+          >
+          `;
+          $introContainer.innerHTML = $content;
+        };
+
+        // SLIDER
+        const $mainSlider = $("#mainSlider");
+
+        $mainSlider.on(
+          "init",
+          function (event, slick, currentSlide, nextSlide) {
+            const $element = $(slick.$slides.get(currentSlide));
+            const $prevSlide = $element[0].previousElementSibling;
+            $prevSlide.classList.add("is-active");
+            getInfo();
+          }
+        );
+
+        $mainSlider.slick({
+          infinite: true,
+          autoplay: false,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          speed: 300,
+          autoplaySpeed: 2000,
+          centerMode: true,
+          responsive: [
+            {
+              breakpoint: 1023,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        });
+
+        $mainSlider.on(
+          "afterChange",
+          function (event, slick, currentSlide, nextSlide) {
+            const $prevSlide = document.querySelector(".is-active");
+            $prevSlide && $prevSlide.classList.remove("is-active");
+            const $element = $(slick.$slides.get(currentSlide));
+            const $mainSlide = $element.context.previousElementSibling;
+            $mainSlide.classList.add("is-active");
+            getInfo();
+          }
+        );
+      });
+    </script>
   </body>
 </html>
