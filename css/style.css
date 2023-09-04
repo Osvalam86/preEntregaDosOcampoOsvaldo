@@ -272,6 +272,12 @@ img {
   margin: 0;
 }
 
+.font-subtitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
 .font-intro {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -474,6 +480,38 @@ textarea.form-control:focus {
   box-shadow: 0 0 0 0.25rem #0a58caba;
 }
 
+.main-video {
+  border: 0.313rem solid;
+  border-radius: 0.5rem;
+  height: 31.25rem;
+  margin: 2.5rem 0;
+  width: 100%;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  row-gap: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.video-list__iframe {
+  height: 28.125rem;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .video-list {
+    row-gap: 1.5rem;
+  }
+
+  .video-list__iframe {
+    height: 21.25rem;
+  }
+}
+
 /******** footer ********/
 .footer {
   background-color: var(--color-secondary);
@@ -517,6 +555,7 @@ textarea.form-control:focus {
 
 .btn {
   font-size: 1.5rem;
+  font-weight: bold;
   padding: 1rem;
   transition: outline 0.15s ease-in-out;
 }
@@ -543,4 +582,17 @@ textarea.form-control:focus {
   --bs-btn-active-border-color: var(--color-secondary);
   --bs-btn-disabled-color: var(--color-secondary);
   --bs-btn-disabled-border-color: var(--color-secondary);
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-size: cover;
+}
+
+.modal-header .btn-close:focus {
+  box-shadow: none;
+  outline: 0.125rem solid;
+  outline-offset: 0.25rem;
 }
