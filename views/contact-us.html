@@ -22,6 +22,190 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
+    <!-- Navigation -->
+    <header class="header fixed-top">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">
+            <img
+              src="../assets/images/general/logotipo.png"
+              alt="Spiderverso logo"
+              class="navbar-brand__logo"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <label class="hamburger">
+              <input type="checkbox" id="checkbox" />
+              <svg viewBox="0 0 32 32">
+                <path
+                  class="line line-top-bottom"
+                  d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                ></path>
+                <path class="line" d="M7 16 27 16"></path>
+              </svg>
+            </label>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../index.html"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./characters.html">Spiderverso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./comics.html">Comics</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./videos.html">Videos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./contact-us.html"
+                  >Contáctanos</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="font-title">Contáctanos</h1>
+            <p class="font-intro mt-4">
+              Para nosotros es importante tu opinión, es por eso que te pedimos
+              colabores con nosotros, para hacer crecer este proyecto, por ello
+              te pedimos que si tienes alguna sugerencia o bien conoces algún
+              <strong>spaidy</strong> que nos haga falta incluir, por favor
+              háznoslo saber y nos daremos a la tarea de agregarlo a nuestra
+              base de datos para que viva dentro de nuestro Spiderverso
+            </p>
+          </div>
+        </div>
+        <form class="contact-form row g-4">
+          <div class="col-md-12">
+            <label for="inputName" class="form-label font-label"
+              >Nombre completo</label
+            >
+            <input
+              type="text"
+              placeholder="Ej. Cosme fulanito"
+              class="form-control"
+              id="inputName"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="inputAddress" class="form-label font-label"
+              >Dirección</label
+            >
+            <input
+              type="text"
+              placeholder="Ej. Calle Siempre viva 742 en Springfield "
+              class="form-control"
+              id="inputAddress"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputPhone" class="form-label font-label"
+              >Teléfono</label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              id="inputPhone"
+              placeholder="Ej. +764 84377 5242"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail" class="form-label font-label"
+              >Correo electrónico</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="inputEmail"
+              placeholder="Ej. correopersonal@dominio.com"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="message" class="form-label font-label">City</label>
+            <textarea
+              type="text"
+              class="form-control"
+              placeholder="Déjanos un mensaje"
+              id="message"
+              rows="6"
+            ></textarea>
+          </div>
+          <div class="col-12 mt-5">
+            <div class="contact-form__buttons">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="reset" class="btn btn-secondary">
+                Reestablecer
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="footer__copyright">
+          <strong>Spiderverso | Todos los derechos reservados ©</strong>
+        </p>
+        <div class="social-networks">
+          <a
+            href="https://www.facebook.com/SpiderManATravesDelSpiderverso/?brand_redir=850223265102675"
+            class="social-networks__link"
+            target="_blank"
+          >
+            <img
+              src="../assets/images/social/facebook.png"
+              alt="Logotipo de Facebook"
+              class="social-networks__logo"
+            />
+          </a>
+          <a
+            href="https://twitter.com/los_vere_en_sue"
+            class="social-networks__link"
+            target="_blank"
+          >
+            <img
+              src="../assets/images/social/twitter.png"
+              alt="Logotipo de Twitter"
+              class="social-networks__logo"
+            />
+          </a>
+          <a
+            href="https://www.sonypictures.com.mx/peliculas/spider-man-traves-del-spider-verso"
+            class="social-networks__link"
+            target="_blank"
+          >
+            <img
+              src="../assets/images/social/google.png"
+              alt="Logotipo de Google +"
+              class="social-networks__logo"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
     <!-- Bootstrap script -->
     <script src="../js/bootstrap.min.js"></script>
   </body>
