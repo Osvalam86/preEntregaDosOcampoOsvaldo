@@ -8,20 +8,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const $introContainer = document.getElementById("introContainer");
 
     const getInfo = () => {
-      let $slideActive = document
-        .querySelector(".slick-slide.is-active")
-        .getAttribute("data-position");
-      const info = dataHome[parseInt($slideActive)];
+      let width = window.innerWidth;
+      let info = "";
+
+      if (width >= 480) {
+        let $slideActive = document
+          .querySelector(".slick-slide.is-active")
+          .getAttribute("data-position");
+        info = dataHome[parseInt($slideActive)];
+      } else {
+        let $slideActive = document
+          .querySelector(".slick-current.slick-active")
+          .getAttribute("data-position");
+        info = dataHome[parseInt($slideActive)];
+      }
+
       if (!info) {
         return false;
       }
       const $content = `
-    <h2 class="font-title">${info.title}</h2>
-    ${info.intro}
-    <a href="javascript:;" class="btn btn-primary btn--width mt-4 js-modal"
-      >Saber más</a
-    >
-    `;
+        <h2 class="font-title">${info.title}</h2>
+        ${info.intro}
+        <a href="javascript:;" class="btn btn-primary btn--width mt-4 js-modal"
+          >Saber más</a
+        >
+      `;
       $introContainer.innerHTML = $content;
     };
 
