@@ -7,18 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     //DATA
     const $introContainer = document.getElementById("introContainer");
 
-    const getInfo = () => {
-      let width = window.innerWidth;
-      let info = "";
+    const getInfo = ($mainSlide) => {
+      let width = window.innerWidth,
+        info = "";
 
       if (width >= 480) {
+        $mainSlide.classList.add("is-active");
         let $slideActive = document
           .querySelector(".slick-slide.is-active")
           .getAttribute("data-position");
         info = dataHome[parseInt($slideActive)];
       } else {
+        $mainSlide.nextSibling.classList.add("is-active");
         let $slideActive = document
-          .querySelector(".slick-current.slick-active")
+          .querySelector(".slick-slide.is-active")
           .getAttribute("data-position");
         info = dataHome[parseInt($slideActive)];
       }
@@ -40,19 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const $mainSlider = $("#mainSlider");
 
     $mainSlider.on("init", function (event, slick, currentSlide, nextSlide) {
+      $prevSlide = document.querySelector(".slick-slide.is-active");
+      $prevSlide && $prevSlide.classList.remove("is-active");
       const $element = $(slick.$slides.get(currentSlide));
-      const $prevSlide = $element[0].previousElementSibling;
-      $prevSlide.classList.add("is-active");
-      getInfo();
+      const $mainSlide = $element[0].previousElementSibling;
+      getInfo($mainSlide);
     });
 
     $mainSlider.slick({
       infinite: true,
-      autoplay: false,
+      autoplay: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       speed: 300,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 4000,
       centerMode: true,
       responsive: [
         {
@@ -73,14 +76,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     $mainSlider.on(
+      "beforeChange",
+      function (event, slick, currentSlide, nextSlide) {
+        let $prevSlide = document.querySelector(".slick-slide.is-active");
+        $prevSlide && $prevSlide.classList.remove("is-active");
+      }
+    );
+
+    $mainSlider.on(
       "afterChange",
       function (event, slick, currentSlide, nextSlide) {
-        const $prevSlide = document.querySelector(".is-active");
+        let $prevSlide = document.querySelector(".slick-slide.is-active");
         $prevSlide && $prevSlide.classList.remove("is-active");
         const $element = $(slick.$slides.get(currentSlide));
         const $mainSlide = $element.context.previousElementSibling;
-        $mainSlide.classList.add("is-active");
-        getInfo();
+        getInfo($mainSlide);
       }
     );
   }
