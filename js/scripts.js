@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const $content = `
     <h2 class="font-title">${info.title}</h2>
     ${info.intro}
-    <a href="${info.link}" class="font-link btn btn-primary mt-4"
+    <a href="${info.link}" class="btn btn-primary btn--width mt-4"
       >Saber más</a
     >
     `;
