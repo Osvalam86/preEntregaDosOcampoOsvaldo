@@ -267,9 +267,21 @@ img {
 }
 
 .font-title {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin: 0;
+}
+
+@media (min-width: 420px) {
+  .font-title {
+    font-size: 3.875rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .font-title {
+    font-size: 5rem;
+  }
 }
 
 .font-subtitle {
