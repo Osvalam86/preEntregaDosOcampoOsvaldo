@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", () => {
   //DATA
   const $introContainer = document.getElementById("introContainer");
 
