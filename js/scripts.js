@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const path = document.location.pathname;
+  const path = document.location.pathname,
+    title = document.title.toUpperCase();
 
   // Home functionality
-  if (path.includes("index.html")) {
+  if (path.includes("index.html") || title === "INICIO") {
     //DATA
     const $introContainer = document.getElementById("introContainer");
 
